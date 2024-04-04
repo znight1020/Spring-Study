@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class HelloController {
 
-    @GetMapping
+    @GetMapping("/hello")
     public String hello(Model model){
         model.addAttribute("name", "hello");
         return "hello";
