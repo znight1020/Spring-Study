@@ -22,16 +22,19 @@ class MemberServiceIntegrationTest {
 
     @Test
     void join() {
-        // given
         Member member = new Member();
         member.setName("spring");
 
-        // when
-        Long saveId = memberService.join(member);
+        long start = System.currentTimeMillis();
 
-        // then
-        Member findMember = memberService.findOne(saveId).get();
-        assertThat(member.getName()).isEqualTo(findMember.getName());
+        try{
+            Long saveId = memberService.join(member);
+            Member findMember = memberService.findOne(saveId).get();
+            assertThat(member.getName()).isEqualTo(findMember.getName());
+        } finally {
+            long end = System.currentTimeMillis();
+            System.out.println(end - start + "ms");
+        }
     }
 
     @Test
