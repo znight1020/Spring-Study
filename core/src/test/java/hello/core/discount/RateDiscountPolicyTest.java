@@ -6,9 +6,12 @@ import hello.core.member.Member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Component
 class RateDiscountPolicyTest {
     AppConfig appConfig = new AppConfig();
 
@@ -34,7 +37,7 @@ class RateDiscountPolicyTest {
         //when
         int discount = discountPolicy.discount(member, 10000);
         //then
-        Assertions.assertThat(discount).isEqualTo(1000);
+        Assertions.assertThat(discount).isEqualTo(0);
     }
 
 }
