@@ -41,8 +41,8 @@ public class SpringConfig {
         // return new JpaMemberRepository(em); // jpa 는 EntityManager 를 같이 넣어준다.
     }*/
 
-    @Bean
+    /*@Bean
     public TimeTraceAop timeTraceAop() {
         return new TimeTraceAop();
-    }
+    }*/
 }
