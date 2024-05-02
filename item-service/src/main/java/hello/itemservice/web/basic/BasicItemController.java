@@ -40,7 +40,6 @@ public class BasicItemController {
         item.setItemName(itemName);
         item.setPrice(price);
         item.setQuantity(quantity);
-
         itemRepository.save(item);
 
         model.addAttribute("item", item);
@@ -54,9 +53,18 @@ public class BasicItemController {
         return "/basic/item";
     }
 
+    @GetMapping("/{itemId}/edit")
+    public String editForm(@PathVariable Long itemId, Model model){
+        Item item = itemRepository.findById(itemId);
+        model.addAttribute("item", item);
+        return "/basic/editForm";
+    }
 
-
-
+    @PostMapping("/{itemId}/edit")
+    public String edit(@PathVariable("itemId") Long itemId, Item item){
+        itemRepository.update(itemId, item);
+        return "redirect:/basic/items/{itemId}";
+    }
 
     @GetMapping("/{itemId}")
     public String item(@PathVariable long itemId, Model model){
