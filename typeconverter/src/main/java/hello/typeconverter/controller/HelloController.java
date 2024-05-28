@@ -1,5 +1,6 @@
 package hello.typeconverter.controller;
 
+import hello.typeconverter.type.IpPort;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,4 +23,13 @@ public class HelloController {
         System.out.println("data = " + data);
         return "ok";
     }
+
+    @GetMapping("/hello-v3")
+    public String helloV3(@RequestParam IpPort ipPort){
+        System.out.println("IP = " + ipPort.getIp());
+        System.out.println("PORT = " + ipPort.getPort());
+        return "ok";
+    }
+
+
 }
