@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 public class ServletApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ServletApplication.class, args);
+		SpringApplication.rucn(ServletApplication.class, args);
 	}
 
 	/*@Bean
