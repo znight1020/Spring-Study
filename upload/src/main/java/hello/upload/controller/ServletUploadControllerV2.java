@@ -25,6 +25,9 @@ public class ServletUploadControllerV2 {
     @Value("${file.dir}")
     private String fileDir;
 
+    @Value("${file.dir2}")
+    private String fileDir2;
+
     @GetMapping("/upload")
     public String newFile() {
         return "upload-form";
@@ -60,7 +63,7 @@ public class ServletUploadControllerV2 {
 
             // 파일에 저장하기
             if(StringUtils.hasText(part.getSubmittedFileName())){
-                String fullPath = fileDir + part.getSubmittedFileName();
+                String fullPath = fileDir2 + part.getSubmittedFileName();
                 log.info("파일 저장 fullPath={}", fullPath);
                 part.write(fullPath);
             }
