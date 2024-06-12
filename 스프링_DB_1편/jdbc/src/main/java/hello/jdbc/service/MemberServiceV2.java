@@ -8,7 +8,6 @@ import lombok.extern.slf4j.Slf4j;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-
 /**
  * 트랜잭션 - 파라미터 연동, 풀을 고려한 종료
  * */
