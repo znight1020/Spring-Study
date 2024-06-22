@@ -19,7 +19,7 @@ public class Order {
     @Column(name = "order_id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) // 양방향 연관관계 이므로 여기에서는 ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL) // 양방향 연관관계 이므로 여기에서는 ManyToOne
     @JoinColumn(name = "member_id")
     private Member member;
 
