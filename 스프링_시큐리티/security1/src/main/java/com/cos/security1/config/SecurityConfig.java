@@ -23,7 +23,7 @@ public class SecurityConfig {
 
         return http.csrf(AbstractHttpConfigurer::disable).authorizeHttpRequests((authorizeRequest) ->
                         authorizeRequest
-                                // 지엽적인 순서대로 작성해야 한다.
+                                // 구체적인 순서대로 작성해야 한다.
                                 .requestMatchers("/user/**").authenticated() // 인증된 사용자만 user 경로에 접근할 수 있다.
                                 .requestMatchers("/manager/**").hasAnyRole("ADMIN", "MANAGER") // manager 경로 접근 시 인증 뿐 아니라 ADMIN 혹은 MANAGER 역할을 가지고 있어야 한다.
                                 .requestMatchers("/admin/**").hasAnyRole("ADMIN") // admin 경로 접근 시 인증 뿐 아니라 ADMIN 역할을 가지고 있어야 한다.
@@ -31,6 +31,8 @@ public class SecurityConfig {
                 )
                 .formLogin(configurer ->
                         configurer.loginPage("/loginForm")
+                                .loginProcessingUrl("/login") // login 주소가 호출이 되면 시큐리티가 낚아채서 대신 로그인을 진행해준다.
+                                .defaultSuccessUrl("/")
                 )
                 //.formLogin(Customizer.withDefaults()) // 기존 Security 로그인 페이지 띄우기
                 .build();
