@@ -1,16 +1,21 @@
 package com.cos.security1.controller;
 
+import com.cos.security1.config.auth.PrincipalDetails;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+@Slf4j
 @Controller
 public class IndexController {
     @Autowired
@@ -18,6 +23,18 @@ public class IndexController {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @GetMapping("/test/login")
+    @ResponseBody
+    public String testLogin(Authentication authentication,
+                            @AuthenticationPrincipal PrincipalDetails userDetails){ // DI(의존성 주입)
+        log.info("/test/login ===============");
+        PrincipalDetails principalDetails = (PrincipalDetails) authentication.getPrincipal();
+        log.info("authentication: {}", principalDetails.getUser());
+
+        log.info("userDetails: {}", userDetails.getUser());
+        return "세션 정보 확인하기";
+    }
 
     @GetMapping({"", "/"})
     public String index() {
