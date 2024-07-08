@@ -3,13 +3,17 @@ package com.cos.security1.controller;
 import com.cos.security1.config.auth.PrincipalDetails;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
+import com.cos.security1.util.CustomBCryptPasswordEncoder;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,12 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Slf4j
 @Controller
+@RequiredArgsConstructor
 public class IndexController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final CustomBCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/test/login")
     @ResponseBody
@@ -33,7 +37,18 @@ public class IndexController {
         log.info("authentication: {}", principalDetails.getUser());
 
         log.info("userDetails: {}", userDetails.getUser());
-        return "세션 정보 확인하기";
+        return "OAuth 세션 정보 확인하기";
+    }
+
+    @GetMapping("/test/oauth/login")
+    @ResponseBody
+    public String testOAuthLogin(Authentication authentication,
+                            @AuthenticationPrincipal OAuth2User oauth){ // DI(의존성 주입)
+        log.info("/test/oauth/login ===============");
+        OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
+        log.info("authentication: {}", oAuth2User.getAttributes());
+        log.info("oauth2User: {}", oAuth2User.getAttributes());
+        return "OAuth 세션 정보 확인하기";
     }
 
     @GetMapping({"", "/"})
@@ -41,9 +56,12 @@ public class IndexController {
         return "index";
     }
 
+    // OAuth 로그인을 해도 PrincipalDetails
+    // 일반 로그인을 해도 PrincipalDetails
     @GetMapping("/user")
     @ResponseBody
-    public String user() {
+    public String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+        log.info("principalDetails: {}", principalDetails.getUser());
         return "user";
     }
 

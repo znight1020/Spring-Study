@@ -4,8 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.sql.Timestamp;
@@ -13,6 +12,7 @@ import java.sql.Timestamp;
 @Entity
 @Getter
 @Setter
+@ToString
 public class User {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -25,4 +25,20 @@ public class User {
     private String providerId;
     @CreationTimestamp
     private Timestamp createDate;
+
+    @Builder
+    public User(int id, String username, String password, String email, String role, String provider, String providerId, Timestamp createDate) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.role = role;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.createDate = createDate;
+    }
+
+    public User() {
+
+    }
 }
