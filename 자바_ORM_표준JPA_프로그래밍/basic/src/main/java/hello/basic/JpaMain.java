@@ -17,11 +17,14 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member member = new Member();
+            Member member = new Member(); // 비영속 상태, 영속성 컨텍스트에 등록되지 않은 상태
             member.setId(1L);
             member.setName("helloA");
+            
+            // 1차 캐시에 저장됨, 영속 상태
             em.persist(member);
 
+            // 1차 캐시에서 조회
             Member findMember = em.find(Member.class, 1L);
             System.out.println("findMember.id = " + findMember.getId());
             System.out.println("findMember.name = " + findMember.getName());
@@ -31,7 +34,9 @@ public class JpaMain {
                     .setMaxResults(5) // limit
                     .getResultList();
 
-            findMember.setName("HelloJPA");
+            findMember.setName("HelloJPA"); // Dirty Checking, flush() 호출 시 1차 캐시에 저장된 스냅샷과 비교, 변경을 감지하여 update 쿼리 생성
+
+            // em.detach(findMember); // 준영속 상태 변경, flush() 호출해도 DB 반영 X
 
             tx.commit();
         } catch (Exception e) {
