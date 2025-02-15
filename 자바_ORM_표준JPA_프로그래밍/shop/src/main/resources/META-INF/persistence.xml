@@ -7,6 +7,8 @@
         <class>study.shop.domain.Item</class>
         <class>study.shop.domain.OrderItem</class>
         <class>study.shop.domain.Order</class>
+        <class>study.shop.domain.Category</class>
+        <class>study.shop.domain.Delivery</class>
         <properties>
 
             <!-- 필수 속성 -->

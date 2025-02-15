@@ -2,25 +2,27 @@ package study.shop.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import java.util.List;
+import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 @Entity
-public class Item {
+public class Delivery {
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-  @Column(name = "ITEM_ID")
+  @Column(name = "DELIVERY_ID")
   private Long id;
-  private String name;
-  private Integer price;
-  private Integer stockQuantity;
+  private String city;
+  private String street;
+  private String zipcode;
+  private DeliveryStatus status;
 
-  @ManyToMany(mappedBy = "items")
-  private List<Category> categories;
+  @OneToOne(mappedBy = "delivery")
+  private Order order;
 }
