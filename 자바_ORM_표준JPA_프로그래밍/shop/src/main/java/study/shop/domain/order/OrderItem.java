@@ -1,4 +1,4 @@
-package study.shop.domain;
+package study.shop.domain.order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,10 +9,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.Setter;
+import study.shop.domain.BaseEntity;
+import study.shop.domain.item.Item;
 
 @Getter @Setter
 @Entity
-public class OrderItem {
+public class OrderItem extends BaseEntity {
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ORDER_ITEM_ID")

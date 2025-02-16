@@ -4,8 +4,8 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
-import study.shop.domain.Order;
-import study.shop.domain.OrderItem;
+import study.shop.domain.order.Order;
+import study.shop.domain.order.OrderItem;
 
 public class JpaMain {
   public static void main(String[] args) {

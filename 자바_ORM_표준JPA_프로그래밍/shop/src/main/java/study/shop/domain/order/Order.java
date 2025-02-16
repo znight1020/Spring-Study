@@ -1,4 +1,4 @@
-package study.shop.domain;
+package study.shop.domain.order;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,11 +16,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import study.shop.domain.BaseEntity;
+import study.shop.domain.delivery.Delivery;
+import study.shop.domain.Member;
 
 @Getter @Setter
 @Table(name = "ORDERS")
 @Entity
-public class Order {
+public class Order extends BaseEntity {
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "ORDER_ID")

@@ -1,4 +1,4 @@
-package study.shop.domain;
+package study.shop.domain.order;
 
 public enum OrderStatus {
   ORDER, CANCEL
