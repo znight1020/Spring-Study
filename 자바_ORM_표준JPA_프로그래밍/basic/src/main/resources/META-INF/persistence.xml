@@ -3,7 +3,8 @@
              xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
     <persistence-unit name="hello">
-        <class>hello.basic.domain.Member</class>
+        <class>hello.basic.domain.member.Member</class>
+        <class>hello.basic.domain.member.Team</class>
         <class>hello.basic.domain.item.Item</class>
         <class>hello.basic.domain.item.Album</class>
         <class>hello.basic.domain.item.Movie</class>

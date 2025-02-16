@@ -1,6 +1,6 @@
 package hello.basic.main;
 
-import hello.basic.domain.Member;
+import hello.basic.domain.member.Member;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
