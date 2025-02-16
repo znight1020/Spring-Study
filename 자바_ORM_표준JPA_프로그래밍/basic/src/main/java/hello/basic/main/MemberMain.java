@@ -1,4 +1,4 @@
-package hello.basic;
+package hello.basic.main;
 
 import hello.basic.domain.Member;
 import jakarta.persistence.EntityManager;
@@ -8,7 +8,7 @@ import jakarta.persistence.Persistence;
 
 import java.util.List;
 
-public class JpaMain {
+public class MemberMain {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
         EntityManager em = emf.createEntityManager();
