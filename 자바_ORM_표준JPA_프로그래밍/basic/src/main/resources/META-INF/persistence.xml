@@ -9,6 +9,8 @@
         <class>hello.basic.domain.item.Album</class>
         <class>hello.basic.domain.item.Movie</class>
         <class>hello.basic.domain.item.Book</class>
+        <class>hello.basic.domain.cascade.Parent</class>
+        <class>hello.basic.domain.cascade.Child</class>
 
         <properties>
             <!-- 필수 속성 -->
