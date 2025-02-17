@@ -26,7 +26,6 @@ public abstract class Item extends BaseEntity {
   private String name;
   private Integer price;
   private Integer stockQuantity;
-
   @ManyToMany(mappedBy = "items")
   private List<Category> categories;
 }

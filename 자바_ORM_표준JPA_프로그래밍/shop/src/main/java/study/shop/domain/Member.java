@@ -22,7 +22,6 @@ public class Member extends BaseEntity {
   private String city;
   private String street;
   private String zipcode;
-
   @OneToMany(mappedBy = "member")
   private List<Order> orders;
 }

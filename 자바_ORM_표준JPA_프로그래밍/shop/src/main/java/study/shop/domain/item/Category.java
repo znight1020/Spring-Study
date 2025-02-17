@@ -2,6 +2,7 @@ package study.shop.domain.item;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -24,14 +25,11 @@ public class Category extends BaseEntity {
   @Column(name = "CATEGORY_ID")
   private Long id;
   private String name;
-
-  @ManyToOne
+  @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "PARENT_ID")
   private Category parent;
-
   @OneToMany(mappedBy = "parent")
   private List<Category> child = new ArrayList<>();
-
   @ManyToMany
   @JoinTable(name = "CATEGORY_ITEM",
       joinColumns = @JoinColumn(name = "CATEGORY_ID"),
