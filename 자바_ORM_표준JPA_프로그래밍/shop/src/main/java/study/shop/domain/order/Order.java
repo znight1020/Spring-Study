@@ -20,7 +20,7 @@ import lombok.Getter;
 import lombok.Setter;
 import study.shop.domain.BaseEntity;
 import study.shop.domain.delivery.Delivery;
-import study.shop.domain.Member;
+import study.shop.domain.member.Member;
 
 @Getter @Setter
 @Table(name = "ORDERS")

@@ -1,16 +1,10 @@
-package hello.basic.domain.member;
+package study.shop.domain.member;
 
 import jakarta.persistence.Embeddable;
-import java.io.ObjectStreamClass;
 import java.util.Objects;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter
 @Embeddable
 public class Address {
 
@@ -23,9 +17,9 @@ public class Address {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Address address = (Address) o;
-    return Objects.equals(city, address.getCity())
-        && Objects.equals(street, address.getStreet())
-        && Objects.equals(zipcode, address.getZipcode());
+    return Objects.equals(city, address.city)
+        && Objects.equals(street, address.street)
+        && Objects.equals(zipcode, address.zipcode);
   }
 
   @Override

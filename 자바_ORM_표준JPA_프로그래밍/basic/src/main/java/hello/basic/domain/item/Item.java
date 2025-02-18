@@ -13,7 +13,7 @@ import lombok.Setter;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
 @Entity
-public class Item {
+public abstract class Item {
 
   @Id @GeneratedValue
   private Long id;

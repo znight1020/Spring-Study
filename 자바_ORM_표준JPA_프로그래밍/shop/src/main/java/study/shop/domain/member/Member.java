@@ -1,6 +1,7 @@
-package study.shop.domain;
+package study.shop.domain.member;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import study.shop.domain.BaseEntity;
 import study.shop.domain.order.Order;
 
 @Getter @Setter
@@ -19,9 +21,8 @@ public class Member extends BaseEntity {
   @Column(name = "MEMBER_ID")
   private Long id;
   private String name;
-  private String city;
-  private String street;
-  private String zipcode;
+  @Embedded
+  private Address address;
   @OneToMany(mappedBy = "member")
   private List<Order> orders;
 }
