@@ -8,12 +8,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails.Address;
 
 @Entity
-@Table(name = "ORDERS")
-public class Order {
+public class Orders {
 
   @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;

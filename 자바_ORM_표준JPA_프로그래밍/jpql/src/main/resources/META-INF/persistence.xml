@@ -5,7 +5,7 @@
     <persistence-unit name="hello" transaction-type="RESOURCE_LOCAL">
         <class>study.jpql.domain.member.Member</class>
         <class>study.jpql.domain.member.Team</class>
-        <class>study.jpql.domain.item.Order</class>
+        <class>study.jpql.domain.item.Orders</class>
         <class>study.jpql.domain.item.Product</class>
         <properties>
 
